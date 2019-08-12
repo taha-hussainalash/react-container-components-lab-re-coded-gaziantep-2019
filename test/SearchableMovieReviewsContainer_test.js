@@ -8,7 +8,6 @@ import testReviews from './test-reviews';
 import { spy, stub, useFakeTimers } from 'sinon'
 
 Enzyme.configure({ adapter: new Adapter() })
-
 const Noop = (props) => { return <p>Noop</p> };
 
 describe('<SearchableMovieReviewsContainer />', () => {
