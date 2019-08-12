@@ -8,7 +8,6 @@ import testReviews from './test-reviews';
 import { spy, stub, useFakeTimers } from 'sinon'
 
 Enzyme.configure({ adapter: new Adapter() })
-
 const Noop = (props) => { return <p>Noop</p> };
 
 describe('<SearchableMovieReviewsContainer />', () => {
@@ -38,12 +37,12 @@ describe('<SearchableMovieReviewsContainer />', () => {
   it('should have top-level element with class "searchable-movie-reviews"', () => {
     expect(wrapper.hasClass('searchable-movie-reviews'), 'Missing top-level element with class "searchable-movie-reviews"').to.be.true;
   });
-
-  it('should fetch data from the New York Times API on form submission', () => {
+ it('should fetch data from the New York Times API on form submission', () => {
     let form = wrapper.find('form').first()
     form.simulate('submit', { preventDefault: () => {} })
     expect(fetchSpy.callCount > 0, "Fetch was not called").to.equal(true);
-    expect(fetchSpy.firstCall.lastArg, "Fetch should have the base URL 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?'").to.include('https://api.nytimes.com/svc/movies/v2/reviews/search.json?')
+    
+      expect(fetchSpy.firstCall.lastArg, "Fetch should have the base URL 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?'").to.include('https://api.nytimes.com/svc/movies/v2/reviews/search.json?')
   })
 
   it('should render reviews after reviews state updated', () => {
